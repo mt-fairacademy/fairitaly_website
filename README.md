@@ -1,29 +1,38 @@
 # fairitaly_website
 
-## WordPress/Oxygen recovery support
+## WordPress / Oxygen recovery – Homepage WPCode snippet
 
-If your current site is stuck because of buggy custom snippets (WPCode), Oxygen template issues, or server config problems, this repository is now set up to track a safe recovery workflow.
+### Fixed snippet
 
-### How I can help
+The file **[`wpcode-homepage.js`](wpcode-homepage.js)** is the corrected version of the
+homepage WPCode JavaScript snippet.  It is a drop-in replacement for the original.
 
-I can help you fix the site **step by step** if you provide:
+#### Bugs fixed
 
-1. A list of urgent bugs (what is broken, and where).
-2. Access details needed for troubleshooting (WordPress admin, staging URL, plugin list, and recent code snippets you added in WPCode).
-3. Your redesign requirements (homepage first, then inner pages).
+| # | Bug | Impact |
+|---|-----|--------|
+| 1 | `setTimeout(function(){` opener was accidentally deleted | **Runtime syntax error – entire script failed silently** |
+| 2 | FOUC `visibility:hidden` style was injected inside `showSlide()` – i.e. on every 4-second slide change | Column flickered invisible on each slide transition |
+| 3 | Identical block-builder code existed in both a 1000 ms and a 1500 ms `setTimeout` | Double DOM manipulation, duplicate elements on slow connections |
+| 4 | `_rich_text-30-20` partially hidden in `go()`, then fully removed later | Inconsistent state, redundant code |
+| 5 | `link-208-20` set to `display:none` in `go()`, then `.remove()`d in the timeout | Inconsistent cleanup |
+| 6 | `link_button-47-20` removed at IIFE level instead of inside `go()` | Inconsistent structure, hard to maintain |
+| 7 | `fair-academy-section` created in `go()` and destroyed 1 s later in the timeout | Visible 1-second flash of incorrectly styled content |
+| 8 | `var el` re-declared 11 times in a row | Variable shadowing, unpredictable order of writes |
 
-### Recommended recovery flow
+#### How to deploy
 
-1. **Clone to staging first** (never edit production directly).
-2. **Export current Oxygen templates** and back up database/files.
-3. **Disable custom WPCode snippets one by one** to isolate breakages.
-4. **Fix critical layout/runtime errors** (PHP/JS/CSS conflicts).
-5. **Rebuild homepage sections with clean components** and test responsive behavior.
-6. **Promote changes to production only after validation**.
+1. Open **WP Admin → WPCode → Snippets → Homepage snippet**.
+2. Replace the entire code body with the contents of `wpcode-homepage.js`.
+3. Save and test on a staging URL before pushing to production.
 
-### Next action
+### Recovery workflow (general)
 
-Share your top 3 blocking issues and I can propose exact fixes and implementation order.
+1. **Stage first** – never edit the live site directly.
+2. **Back up DB + files** before any change.
+3. **Disable WPCode snippets one by one** to isolate breakages.
+4. **Fix CSS/JS conflicts** from Oxygen + plugin interactions.
+5. **Promote to production** only after visual validation on mobile and desktop.
 
 ## fairitaly.org specific issue: design + www redirect
 
