@@ -416,6 +416,12 @@
     var col2 = document.getElementById('div_block-8-20');
     if (!col2) return; // Oxygen hasn't rendered this column yet; retry will fire
 
+    // Visual order constants – shared by both cards:
+    //   1 = title / logo (top), 2 = button, 3 = body content (bottom)
+    var ORDER_TITLE_LOGO = '1';
+    var ORDER_BUTTON     = '2';
+    var ORDER_CONTENT    = '3';
+
     col2.style.setProperty('background', 'transparent', 'important');
     col2.style.setProperty('padding', '0', 'important');
     col2.style.setProperty('gap', '16px', 'important');
@@ -429,14 +435,14 @@
     // 1. Fair World Cafe title
     var wcTitle = document.getElementById('link-13-20');
     if (wcTitle) {
-      wcTitle.style.setProperty('order', '1', 'important');
+      wcTitle.style.setProperty('order', ORDER_TITLE_LOGO, 'important');
       wcB.appendChild(wcTitle);
     }
 
     // 2. WCSBI button (created earlier in go())
     var wcBtn = document.getElementById('fair-wcsbi-btn');
     if (wcBtn) {
-      wcBtn.style.setProperty('order', '2', 'important');
+      wcBtn.style.setProperty('order', ORDER_BUTTON, 'important');
       wcBtn.style.setProperty('margin', '0', 'important');
       wcB.appendChild(wcBtn);
     }
@@ -444,7 +450,7 @@
     // 3. Slideshow (created earlier in go())
     var wcSlide = document.getElementById('fair-slideshow');
     if (wcSlide) {
-      wcSlide.style.setProperty('order', '3', 'important');
+      wcSlide.style.setProperty('order', ORDER_CONTENT, 'important');
       wcSlide.style.setProperty('margin', '0', 'important');
       wcSlide.style.setProperty('width', '100%', 'important');
       wcB.appendChild(wcSlide);
@@ -462,7 +468,7 @@
     if (acLogoWrap) {
       acLogoWrap.id = 'fair-ac-logo';
       acLogoWrap.style.cssText = 'display:block;width:100%;text-align:center;margin:0;';
-      acLogoWrap.style.setProperty('order', '1', 'important');
+      acLogoWrap.style.setProperty('order', ORDER_TITLE_LOGO, 'important');
       var acLogoImg = acLogoWrap.querySelector('img');
       if (acLogoImg) {
         acLogoImg.style.cssText = 'max-width:180px;height:auto;display:block;margin:0 auto;';
@@ -476,7 +482,7 @@
     acA.href = 'https://www.fair-academy.org';
     acA.target = '_blank';
     acA.textContent = 'Vai al sito FAIR Academy \u2192';
-    acA.style.setProperty('order', '2', 'important');
+    acA.style.setProperty('order', ORDER_BUTTON, 'important');
     acA.addEventListener('mouseenter', function () {
       this.style.setProperty('background', '#d97a0f', 'important');
     });
@@ -489,7 +495,7 @@
     var acText = document.getElementById('div_block-244-20');
     if (acText) {
       acText.id = 'fair-ac-text';
-      acText.style.setProperty('order', '3', 'important');
+      acText.style.setProperty('order', ORDER_CONTENT, 'important');
       acText.style.setProperty('color', '#fff', 'important');
       acText.style.setProperty('text-align', 'center', 'important');
       Array.from(acText.querySelectorAll('*')).forEach(function (el) {
