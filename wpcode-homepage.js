@@ -169,19 +169,19 @@
 
     // FIX #8: unique variable names instead of repeated `var el`
     var elOrder199 = document.getElementById('link-199-20');
-    if (elOrder199) { elOrder199.style.order = '1'; elOrder199.style.marginTop = '22px'; }
+    if (elOrder199) { elOrder199.style.setProperty('order', '1', 'important'); elOrder199.style.marginTop = '22px'; }
     var elOrder96 = document.getElementById('link-96-20');
-    if (elOrder96) elOrder96.style.order = '2';
+    if (elOrder96) elOrder96.style.setProperty('order', '2', 'important');
     var elOrder334 = document.getElementById('code_block-334-20');
-    if (elOrder334) elOrder334.style.order = '2';
+    if (elOrder334) elOrder334.style.setProperty('order', '2', 'important');
     var elOrder98 = document.getElementById('link-98-20');
-    if (elOrder98) elOrder98.style.order = '3';
+    if (elOrder98) elOrder98.style.setProperty('order', '3', 'important');
     var elOrder336 = document.getElementById('code_block-336-20');
-    if (elOrder336) elOrder336.style.order = '3';
+    if (elOrder336) elOrder336.style.setProperty('order', '3', 'important');
     var elOrder316 = document.getElementById('link-316-20');
-    if (elOrder316) elOrder316.style.order = '4';
+    if (elOrder316) elOrder316.style.setProperty('order', '4', 'important');
     var elOrder172 = document.getElementById('code_block-172-20');
-    if (elOrder172) elOrder172.style.order = '4';
+    if (elOrder172) elOrder172.style.setProperty('order', '4', 'important');
 
     // Style section headlines
     ['headline-21-20', 'headline-14-20', 'headline-308-20'].forEach(function (id) {
