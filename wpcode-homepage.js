@@ -116,7 +116,7 @@
           ".oxy-read-more{transition:color 0.2s,background-color 0.2s !important;}" +
           ".oxy-read-more:hover{color:#F7941D !important;}" +
           "#_posts_grid-127-20 .oxy-read-more:hover{color:#F7941D !important;background-color:rgb(220,222,223) !important;text-decoration:none !important;}" +
-          "#fair-wcsbi-btn{font-size:13px !important;font-weight:600 !important;font-family:'Lato',sans-serif !important;background:#F7941D !important;color:#fff !important;border:none !important;border-radius:6px !important;padding:10px 22px !important;display:inline-block !important;text-align:center !important;letter-spacing:0.3px !important;text-decoration:none !important;cursor:pointer !important;margin:12px auto 0 !important;}" +
+          "#fair-wcsbi-btn{font-size:13px !important;font-weight:600 !important;font-family:'Lato',sans-serif !important;background:#F7941D !important;color:#fff !important;border:none !important;border-radius:6px !important;padding:10px 22px !important;display:inline-block !important;text-align:center !important;letter-spacing:0.3px !important;text-decoration:none !important;cursor:pointer !important;margin:0 !important;align-self:center !important;}" +
           "#fair-wcsbi-btn:hover{background:#d97a0f !important;}" +
           "#div_block-8-20{background:transparent !important;padding:0 !important;gap:16px !important;}" +
           "#fair-wc-block,#fair-ac-block{background:rgb(27,63,110) !important;border-radius:12px !important;padding:20px 18px 18px !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;gap:14px !important;width:100% !important;box-sizing:border-box !important;text-align:center !important;}" +
@@ -145,8 +145,9 @@
     // Fix WCSBI links
     var wcsbiLink = document.getElementById('link-134-20');
     if (wcsbiLink) wcsbiLink.setAttribute('href', 'https://wcsbi.org');
+    // link-243-20 is the FAIR Academy logo link; point it to the academy site
     document.querySelectorAll('[id="link-243-20"]').forEach(function (el) {
-      el.setAttribute('href', 'https://wcsbi.org');
+      el.setAttribute('href', 'https://fair-academy.org');
     });
 
     // FIX #4 + #5 + #6: remove all unwanted elements in one place
@@ -426,10 +427,24 @@
     wcB.style.cssText =
       'background:rgb(27,63,110);border-radius:12px;padding:20px 18px 18px;' +
       'display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;width:100%;box-sizing:border-box;text-align:center;';
-    ['link-13-20'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) wcB.appendChild(el);
-    });
+    // 1. Fair World Cafe title
+    var wcTitle = document.getElementById('link-13-20');
+    if (wcTitle) wcB.appendChild(wcTitle);
+
+    // 2. WCSBI button (created earlier in go())
+    var wcBtn = document.getElementById('fair-wcsbi-btn');
+    if (wcBtn) {
+      wcBtn.style.setProperty('margin', '0', 'important');
+      wcB.appendChild(wcBtn);
+    }
+
+    // 3. Slideshow (created earlier in go())
+    var wcSlide = document.getElementById('fair-slideshow');
+    if (wcSlide) {
+      wcSlide.style.margin = '0';
+      wcSlide.style.width = '100%';
+      wcB.appendChild(wcSlide);
+    }
 
     /* Academy card */
     var acB = document.createElement('div');
