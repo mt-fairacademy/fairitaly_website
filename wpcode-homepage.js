@@ -145,10 +145,9 @@
     // Fix WCSBI links
     var wcsbiLink = document.getElementById('link-134-20');
     if (wcsbiLink) wcsbiLink.setAttribute('href', 'https://wcsbi.org');
-    // link-243-20 is the FAIR Academy logo link; point it to the academy site
-    document.querySelectorAll('[id="link-243-20"]').forEach(function (el) {
-      el.setAttribute('href', 'https://www.fair-academy.org');
-    });
+    // FAIR Academy logo link; support both original and remapped IDs
+    var acLogoLink = document.getElementById('link-243-20') || document.getElementById('fair-ac-logo');
+    if (acLogoLink) acLogoLink.setAttribute('href', 'https://www.fair-academy.org');
 
     // FIX #4 + #5 + #6: remove all unwanted elements in one place
     ['link_button-312-20', 'link-208-20', 'video-209-20',
@@ -430,14 +429,14 @@
     // 1. Fair World Cafe title
     var wcTitle = document.getElementById('link-13-20');
     if (wcTitle) {
-      wcTitle.style.setProperty('order', '1', 'important');
+      wcTitle.style.order = '1';
       wcB.appendChild(wcTitle);
     }
 
     // 2. WCSBI button (created earlier in go())
     var wcBtn = document.getElementById('fair-wcsbi-btn');
     if (wcBtn) {
-      wcBtn.style.setProperty('order', '2', 'important');
+      wcBtn.style.order = '2';
       wcBtn.style.setProperty('margin', '0', 'important');
       wcB.appendChild(wcBtn);
     }
@@ -463,7 +462,7 @@
     if (acLogoWrap) {
       acLogoWrap.id = 'fair-ac-logo';
       acLogoWrap.style.cssText = 'display:block;width:100%;text-align:center;margin:0;';
-      acLogoWrap.style.setProperty('order', '1', 'important');
+      acLogoWrap.style.order = '1';
       var acLogoImg = acLogoWrap.querySelector('img');
       if (acLogoImg) {
         acLogoImg.style.cssText = 'max-width:180px;height:auto;display:block;margin:0 auto;';
@@ -477,7 +476,7 @@
     acA.href = 'https://www.fair-academy.org';
     acA.target = '_blank';
     acA.textContent = 'Vai al sito FAIR Academy \u2192';
-    acA.style.setProperty('order', '2', 'important');
+    acA.style.order = '2';
     acA.addEventListener('mouseenter', function () {
       this.style.setProperty('background', '#d97a0f', 'important');
     });
@@ -490,7 +489,7 @@
     var acText = document.getElementById('div_block-244-20');
     if (acText) {
       acText.id = 'fair-ac-text';
-      acText.style.setProperty('order', '3', 'important');
+      acText.style.order = '3';
       acText.style.setProperty('color', '#fff', 'important');
       acText.style.setProperty('text-align', 'center', 'important');
       Array.from(acText.querySelectorAll('*')).forEach(function (el) {
