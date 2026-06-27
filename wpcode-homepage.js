@@ -429,14 +429,14 @@
     // 1. Fair World Cafe title
     var wcTitle = document.getElementById('link-13-20');
     if (wcTitle) {
-      wcTitle.style.order = '1';
+      wcTitle.style.setProperty('order', '1', 'important');
       wcB.appendChild(wcTitle);
     }
 
     // 2. WCSBI button (created earlier in go())
     var wcBtn = document.getElementById('fair-wcsbi-btn');
     if (wcBtn) {
-      wcBtn.style.order = '2';
+      wcBtn.style.setProperty('order', '2', 'important');
       wcBtn.style.setProperty('margin', '0', 'important');
       wcB.appendChild(wcBtn);
     }
@@ -444,9 +444,9 @@
     // 3. Slideshow (created earlier in go())
     var wcSlide = document.getElementById('fair-slideshow');
     if (wcSlide) {
-      wcSlide.style.order = '3';
-      wcSlide.style.margin = '0';
-      wcSlide.style.width = '100%';
+      wcSlide.style.setProperty('order', '3', 'important');
+      wcSlide.style.setProperty('margin', '0', 'important');
+      wcSlide.style.setProperty('width', '100%', 'important');
       wcB.appendChild(wcSlide);
     }
 
@@ -457,12 +457,12 @@
       'background:rgb(27,63,110);border-radius:12px;padding:20px 18px 18px;' +
       'display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;width:100%;box-sizing:border-box;text-align:center;';
 
-    // Academy logo
+    // 1. Academy logo – must be at the top
     var acLogoWrap = document.getElementById('link-243-20');
     if (acLogoWrap) {
       acLogoWrap.id = 'fair-ac-logo';
       acLogoWrap.style.cssText = 'display:block;width:100%;text-align:center;margin:0;';
-      acLogoWrap.style.order = '1';
+      acLogoWrap.style.setProperty('order', '1', 'important');
       var acLogoImg = acLogoWrap.querySelector('img');
       if (acLogoImg) {
         acLogoImg.style.cssText = 'max-width:180px;height:auto;display:block;margin:0 auto;';
@@ -470,13 +470,13 @@
       acB.appendChild(acLogoWrap);
     }
 
-    // Academy button – built directly, no intermediate fair-academy-section (FIX #7)
+    // 2. Academy button
     var acA = document.createElement('a');
     acA.id = 'fair-ac-btn';
     acA.href = 'https://www.fair-academy.org';
     acA.target = '_blank';
     acA.textContent = 'Vai al sito FAIR Academy \u2192';
-    acA.style.order = '2';
+    acA.style.setProperty('order', '2', 'important');
     acA.addEventListener('mouseenter', function () {
       this.style.setProperty('background', '#d97a0f', 'important');
     });
@@ -485,11 +485,11 @@
     });
     acB.appendChild(acA);
 
-    // Academy rich text
+    // 3. Academy rich text – at the bottom
     var acText = document.getElementById('div_block-244-20');
     if (acText) {
       acText.id = 'fair-ac-text';
-      acText.style.order = '3';
+      acText.style.setProperty('order', '3', 'important');
       acText.style.setProperty('color', '#fff', 'important');
       acText.style.setProperty('text-align', 'center', 'important');
       Array.from(acText.querySelectorAll('*')).forEach(function (el) {
