@@ -426,7 +426,7 @@
     wcB.style.cssText =
       'background:rgb(27,63,110);border-radius:12px;padding:20px 18px 18px;' +
       'display:flex;flex-direction:column;align-items:center;width:100%;box-sizing:border-box;';
-    ['link-13-20', 'link-243-20', 'div_block-244-20'].forEach(function (id) {
+    ['link-13-20'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) wcB.appendChild(el);
     });
@@ -439,13 +439,15 @@
       'display:flex;flex-direction:column;align-items:center;width:100%;box-sizing:border-box;';
 
     // Academy logo
-    var img300 = document.getElementById('image-300-20');
-    if (img300) {
-      var acLogo = img300.cloneNode(true);
-      acLogo.id = 'fair-ac-logo';
-      acLogo.style.cssText = 'max-width:180px;height:auto;margin-bottom:10px;display:block;';
-      acB.appendChild(acLogo);
-      img300.remove();
+    var acLogoWrap = document.getElementById('link-243-20');
+    if (acLogoWrap) {
+      acLogoWrap.id = 'fair-ac-logo';
+      acLogoWrap.style.cssText = 'display:block;width:100%;text-align:center;margin-bottom:10px;';
+      var acLogoImg = acLogoWrap.querySelector('img');
+      if (acLogoImg) {
+        acLogoImg.style.cssText = 'max-width:180px;height:auto;display:block;margin:0 auto;';
+      }
+      acB.appendChild(acLogoWrap);
     }
 
     // Academy button – built directly, no intermediate fair-academy-section (FIX #7)
@@ -463,16 +465,14 @@
     acB.appendChild(acA);
 
     // Academy rich text
-    var rt293 = document.getElementById('_rich_text-293-20');
-    if (rt293) {
-      var rt293c = rt293.cloneNode(true);
-      rt293c.id = 'fair-ac-text';
-      rt293c.style.setProperty('color', '#fff', 'important');
-      Array.from(rt293c.querySelectorAll('*')).forEach(function (el) {
+    var acText = document.getElementById('div_block-244-20');
+    if (acText) {
+      acText.id = 'fair-ac-text';
+      acText.style.setProperty('color', '#fff', 'important');
+      Array.from(acText.querySelectorAll('*')).forEach(function (el) {
         el.style.setProperty('color', '#fff', 'important');
       });
-      acB.appendChild(rt293c);
-      rt293.remove();
+      acB.appendChild(acText);
     }
 
     // Clean up any leftover stale element
