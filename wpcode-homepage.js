@@ -119,14 +119,14 @@
           "#fair-wcsbi-btn{font-size:13px !important;font-weight:600 !important;font-family:'Lato',sans-serif !important;background:#F7941D !important;color:#fff !important;border:none !important;border-radius:6px !important;padding:10px 22px !important;display:inline-block !important;text-align:center !important;letter-spacing:0.3px !important;text-decoration:none !important;cursor:pointer !important;margin:12px auto 0 !important;}" +
           "#fair-wcsbi-btn:hover{background:#d97a0f !important;}" +
           "#div_block-8-20{background:transparent !important;padding:0 !important;gap:16px !important;}" +
-          "#fair-wc-block{background:rgb(27,63,110) !important;border-radius:12px !important;padding:20px 18px 18px !important;display:flex !important;flex-direction:column !important;align-items:center !important;width:100% !important;box-sizing:border-box !important;}" +
-          "#fair-ac-block{background:rgb(27,63,110) !important;border-radius:12px !important;padding:20px 18px 18px !important;display:flex !important;flex-direction:column !important;align-items:center !important;width:100% !important;box-sizing:border-box !important;}" +
+          "#fair-wc-block,#fair-ac-block{background:rgb(27,63,110) !important;border-radius:12px !important;padding:20px 18px 18px !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;gap:14px !important;width:100% !important;box-sizing:border-box !important;text-align:center !important;}" +
           "#fair-ac-btn{font-size:13px !important;font-weight:600 !important;font-family:'Lato',sans-serif !important;background:#F7941D !important;color:#fff !important;border:none !important;border-radius:6px !important;padding:10px 22px !important;display:inline-block !important;text-align:center !important;letter-spacing:0.3px !important;text-decoration:none !important;cursor:pointer !important;}" +
           "#fair-ac-btn:hover{background:#d97a0f !important;}" +
-          "#fair-ac-logo{margin-bottom:18px !important;}" +
-          "#fair-ac-btn{margin-top:0 !important;margin-bottom:18px !important;}" +
-          "#fair-ac-text{margin-top:0 !important;padding-top:4px !important;}" +
-          "#fair-ac-text p{margin-top:0 !important;margin-bottom:0 !important;line-height:1.6 !important;}"
+          "#fair-ac-logo{display:block !important;width:100% !important;text-align:center !important;margin:0 !important;}" +
+          "#fair-ac-logo img{max-width:180px !important;height:auto !important;display:block !important;margin:0 auto !important;}" +
+          "#fair-ac-btn{margin:0 !important;align-self:center !important;}" +
+          "#fair-ac-text{width:100% !important;margin:0 !important;padding-top:0 !important;text-align:center !important;}" +
+          "#fair-ac-text p{margin:0 !important;line-height:1.6 !important;text-align:center !important;color:#fff !important;}"
       }
     ];
 
@@ -425,7 +425,7 @@
     wcB.id = 'fair-wc-block';
     wcB.style.cssText =
       'background:rgb(27,63,110);border-radius:12px;padding:20px 18px 18px;' +
-      'display:flex;flex-direction:column;align-items:center;width:100%;box-sizing:border-box;';
+      'display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;width:100%;box-sizing:border-box;text-align:center;';
     ['link-13-20'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) wcB.appendChild(el);
@@ -436,13 +436,13 @@
     acB.id = 'fair-ac-block';
     acB.style.cssText =
       'background:rgb(27,63,110);border-radius:12px;padding:20px 18px 18px;' +
-      'display:flex;flex-direction:column;align-items:center;width:100%;box-sizing:border-box;';
+      'display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;width:100%;box-sizing:border-box;text-align:center;';
 
     // Academy logo
     var acLogoWrap = document.getElementById('link-243-20');
     if (acLogoWrap) {
       acLogoWrap.id = 'fair-ac-logo';
-      acLogoWrap.style.cssText = 'display:block;width:100%;text-align:center;margin-bottom:10px;';
+      acLogoWrap.style.cssText = 'display:block;width:100%;text-align:center;margin:0;';
       var acLogoImg = acLogoWrap.querySelector('img');
       if (acLogoImg) {
         acLogoImg.style.cssText = 'max-width:180px;height:auto;display:block;margin:0 auto;';
@@ -469,8 +469,10 @@
     if (acText) {
       acText.id = 'fair-ac-text';
       acText.style.setProperty('color', '#fff', 'important');
+      acText.style.setProperty('text-align', 'center', 'important');
       Array.from(acText.querySelectorAll('*')).forEach(function (el) {
         el.style.setProperty('color', '#fff', 'important');
+        el.style.setProperty('text-align', 'center', 'important');
       });
       acB.appendChild(acText);
     }
