@@ -125,7 +125,7 @@
           "#fair-ac-logo{display:block !important;width:100% !important;text-align:center !important;margin:0 !important;}" +
           "#fair-ac-logo img{max-width:180px !important;height:auto !important;display:block !important;margin:0 auto !important;}" +
           "#fair-ac-btn{margin:0 !important;align-self:center !important;}" +
-          "#fair-ac-text{width:100% !important;margin:0 !important;padding-top:0 !important;text-align:center !important;}" +
+          "#fair-ac-text{width:100% !important;max-width:320px !important;margin:0 auto !important;padding-top:0 !important;text-align:center !important;box-sizing:border-box !important;}" +
           "#fair-ac-text p{margin:0 !important;line-height:1.6 !important;text-align:center !important;color:#fff !important;}"
       }
     ];
